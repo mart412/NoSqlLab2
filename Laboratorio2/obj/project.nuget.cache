@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5lB67ixLQOyOFz4u7GKfB1nKBoZGTmJA3SgEnBOH4MpOXDatFkszHSe0OU2FxRz1Gni73VeikVxiniA0SYMyPA==",
+  "dgSpecHash": "/H+8EnaBjRXNHJfKj0mMYcuCO9koZRYCU+A50vWlWd6g17fMft14ycT5ClMNeZ9AcF4TGM2ALA9U3/digMtRuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\Laboratorio2.csproj",
+  "projectFilePath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\Laboratorio2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Martin\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Martin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",

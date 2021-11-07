@@ -43,5 +43,6 @@ namespace Laboratorio2.Data
             _context.DeleteOne(usuario => usuario.email == email);
         }
 
+
     }
 }

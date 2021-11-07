@@ -10,7 +10,7 @@ namespace Laboratorio2.Modelos
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public ObjectId id { get; set; }
+        public ObjectId _id { get; set; }
         
         
         [Required]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\Laboratorio2.csproj": {}
+    "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\Laboratorio2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\Laboratorio2.csproj": {
+    "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\Laboratorio2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\Laboratorio2.csproj",
+        "projectUniqueName": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\Laboratorio2.csproj",
         "projectName": "Laboratorio2",
-        "projectPath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\Laboratorio2.csproj",
+        "projectPath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\Laboratorio2.csproj",
         "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\Laboratorio2\\obj\\",
+        "outputPath": "C:\\Users\\Martin\\Documents\\TecnoInf\\NoSql\\Laboratorio2\\NoSqlLab2\\Laboratorio2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",

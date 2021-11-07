@@ -2,10 +2,9 @@
 {
     public class Roles
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public Roles(int id, string nombre)
+        public Roles(string nombre)
         {
             Nombre = nombre;
         }
