@@ -46,20 +46,11 @@ namespace Laboratorio2.Controllers
             }
             else
             {
-                return BadRequest("Ya existe un usuario con el email: " + u.email);
+                return BadRequest("ERROR 101 - Ya existe un usuario con el email: " + u.email);
             }
 
         }
 
-        [HttpPost("{email}")]
-        public IActionResult Actualizar(string email, Usuario u)
-        {
-            var usuario = _db.UsuPorId(email);
-            if (usuario == null) return NotFound("No existe el usuario");
-            _db.EliminarById(email);
-            _db.Crear(u);
-            return Ok("Usuario: " + email + ", modificado con exito");
-        }
 
 
         [HttpDelete("{email}")]
@@ -72,16 +63,17 @@ namespace Laboratorio2.Controllers
             return Ok("Usuario: " + email + ", eliminado con exito");
         }
 
-        [HttpPost("{email},{pass}")]
+        [HttpPost("addrol/{email},{pass}")]
+
         public IActionResult AgregarRol(string email, string pass, ICollection<Roles> roles)
         {
             
             var aux = _db.UsuPorId(email); //busco el usuario con mail igual a email y lo igualo a aux
-            if (aux == null) return NotFound("No existe el usuario");//controlo que existe el usuario
+            if (aux == null) return NotFound("ERROR 102 - No existe el usuario");//controlo que existe el usuario
 
             if (aux.password!= pass) //Valido que la contraseña pasada por parametro sea igual a la contraseña del usuario
             {
-                return NotFound("Password incorrecto");  
+                return NotFound("ERROR 104 - Password incorrecto");  
             }
 
             if (aux.roles == null) //si la lista de roles del usuario es nula, la igualo directamente a la pasada por parametros
@@ -104,5 +96,69 @@ namespace Laboratorio2.Controllers
             return Ok("Roles actualizados correctamente");
 
         }
+
+        [HttpPost("quitrol/{email},{pass}")]
+        public IActionResult QuitarRol(string email, string pass, ICollection<Roles> roles)
+        {
+            var aux = _db.UsuPorId(email); //busco el usuario con mail igual a email y lo igualo a aux
+            if (aux == null) return NotFound("ERROR 102 - No existe el usuario");//controlo que existe el usuario
+
+            if (aux.password != pass) //Valido que la contraseña pasada por parametro sea igual a la contraseña del usuario
+            {
+                return NotFound("ERROR 104 - Password incorrecto");
+            }
+
+            if (aux.roles == null) //si la lista de roles del usuario es nula, devuelvo error 
+            {
+                return BadRequest("ERROR 105 - El usuario " + email + " no tiene asociado roles");
+            }
+
+            foreach (var r in roles) //itero con el for para cada nuevo rol ingresado de la lista pasada por parametro 
+            {
+                if (!aux.roles.Any(x => x.Nombre == r.Nombre))
+                {
+                    return BadRequest("ERROR 103 - El usuario "+email+ " no tiene asociado el rol "+r.Nombre);
+                }//verifico si existe ese rol en la lista de roles del usuario, si no existe devuelvo error, si existe lo elimino
+                else
+                {
+                    aux.roles.Remove(r);
+                }
+            }
+            return Ok("Roles eliminados con exito");
+        } 
+
+        [HttpGet("login/{email},{pass}")]
+        public ActionResult<bool> Login(string email, string pass)
+        {
+            var aux = _db.UsuPorId(email); //busco el usuario con mail igual a email y lo igualo a aux
+            if (aux == null) return NotFound("ERROR 102 - No existe el usuario");//controlo que existe el usuario
+
+            if (aux.password != pass) //Valido que la contraseña pasada por parametro sea igual a la contraseña del usuario
+            {
+                return false;
+            }
+            return true;
+
+        }
+        
+        [HttpGet]
+        [Route("errores")]
+
+        public ActionResult<ICollection<string>> Errores()
+        {
+            var lista = new List<string>();
+            lista.Add("ERROR 101 - Ya existe un usuario con el email *email*");
+            lista.Add("ERROR 102 - No existe el usuario");
+            lista.Add("ERROR 103 - El usuario {email} no tiene asociado el rol {rol}");
+            lista.Add("ERROR 104 - Password incorrecto");
+            lista.Add("ERROR 105 - El usuario {email} no tiene asociado roles");
+
+            return lista;
+
+        }
+        
+
+
+
     }
 }
