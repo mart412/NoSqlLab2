@@ -3,6 +3,7 @@ using Laboratorio2.Data;
 using Laboratorio2.Modelos;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Laboratorio2.Controllers
 {
@@ -57,7 +58,7 @@ namespace Laboratorio2.Controllers
         public IActionResult Eliminar(string email)
         {
             var usuario = _db.UsuPorId(email);
-            if (usuario == null) return NotFound("No existe el usuario");
+            if (usuario == null) return NotFound("ERROR 102 - No existe el usuario");
 
             _db.EliminarById(email);
             return Ok("Usuario: " + email + ", eliminado con exito");
@@ -98,7 +99,7 @@ namespace Laboratorio2.Controllers
         }
 
         [HttpPost("quitrol/{email},{pass}")]
-        public IActionResult QuitarRol(string email, string pass, ICollection<Roles> roles)
+        public IActionResult QuitarRol(string email, string pass, List<Roles> roles)
         {
             var aux = _db.UsuPorId(email); //busco el usuario con mail igual a email y lo igualo a aux
             if (aux == null) return NotFound("ERROR 102 - No existe el usuario");//controlo que existe el usuario
@@ -112,18 +113,25 @@ namespace Laboratorio2.Controllers
             {
                 return BadRequest("ERROR 105 - El usuario " + email + " no tiene asociado roles");
             }
+            List<Roles> roles2 = aux.roles.ToList();
+            Roles rolAux;
 
             foreach (var r in roles) //itero con el for para cada nuevo rol ingresado de la lista pasada por parametro 
             {
-                if (!aux.roles.Any(x => x.Nombre == r.Nombre))
+                if (!roles2.Any(x => x.Nombre == r.Nombre))
                 {
                     return BadRequest("ERROR 103 - El usuario "+email+ " no tiene asociado el rol "+r.Nombre);
                 }//verifico si existe ese rol en la lista de roles del usuario, si no existe devuelvo error, si existe lo elimino
                 else
                 {
-                    aux.roles.Remove(r);
+                    rolAux = roles2.Where(x => x.Nombre == r.Nombre).FirstOrDefault();
+                    roles2.Remove(rolAux);
                 }
             }
+
+            aux.roles = roles2;
+            _db.EliminarById(email); //elimino el usuario 
+            _db.Crear(aux); //agrego el nuevo usuario con los roles actualizados
             return Ok("Roles eliminados con exito");
         } 
 
