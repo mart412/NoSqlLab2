@@ -19,13 +19,13 @@ namespace Laboratorio2.Controllers
             _db=db;
         }
 
-        [HttpGet]
+        [HttpGet("ObtenerUsuarios")]
         public IActionResult ObtenerUsuarios()
         {
             return Ok(_db.ObtenerUsuarios());
         }
 
-        [HttpGet("{email}")]
+        [HttpGet("ObtenerUsuarios/{email}")]
         public IActionResult UsuPorId(string email)
         {
             var u = _db.UsuPorId(email);
@@ -34,7 +34,7 @@ namespace Laboratorio2.Controllers
             return Ok(u);
         }
 
-        [HttpPost]
+        [HttpPost("CrearUsuario")]
         public IActionResult Crear(Usuario u)
         {
             var aux = _db.UsuPorId(u.email);
@@ -54,7 +54,7 @@ namespace Laboratorio2.Controllers
 
 
 
-        [HttpDelete("{email}")]
+        [HttpDelete("eliminarUsuario/{email}")]
         public IActionResult Eliminar(string email)
         {
             var usuario = _db.UsuPorId(email);
@@ -64,7 +64,7 @@ namespace Laboratorio2.Controllers
             return Ok("Usuario: " + email + ", eliminado con exito");
         }
 
-        [HttpPost("addrol/{email},{pass}")]
+        [HttpPost("agregarRol/{email},{pass}")]
 
         public IActionResult AgregarRol(string email, string pass, ICollection<Roles> roles)
         {
@@ -98,7 +98,7 @@ namespace Laboratorio2.Controllers
 
         }
 
-        [HttpPost("quitrol/{email},{pass}")]
+        [HttpPost("quitarRol/{email},{pass}")]
         public IActionResult QuitarRol(string email, string pass, List<Roles> roles)
         {
             var aux = _db.UsuPorId(email); //busco el usuario con mail igual a email y lo igualo a aux
