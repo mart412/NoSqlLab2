@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "3769d621-3dec-49ec-b488-42db8b2c89fb",
+		"name": "Laboratorio2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AgregarRoles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usuario@prueba\",\r\n  \"password\": \"secreto123\",\r\n  \"nombre\": \"Peter\",\r\n  \"apellido\": \"Lopez\",\r\n  \"roles\": [\r\n    {\r\n      \"nombre\": \"Rol1\"\r\n    },\r\n    {\r\n      \"nombre\": \"Rol2\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/CrearUsuario",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"CrearUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usuario2@prueba\",\r\n  \"password\": \"secreto123\",\r\n  \"nombre\": \"PeterPan\",\r\n  \"apellido\": \"Gutierrez\",\r\n  \"roles\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/CrearUsuario",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"CrearUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/ObtenerUsuarios",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"ObtenerUsuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerUsuarioEmail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/ObtenerUsuarios/usuario@prueba",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"ObtenerUsuarios",
+						"usuario@prueba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AgregarRol",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"nombre\": \"Rol Nuevo\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/agregarRol/usuario@prueba,secreto123",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"agregarRol",
+						"usuario@prueba,secreto123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QuitarRol",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"nombre\": \"Rol Nuevo\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/quitarRol/usuario@prueba,secreto123",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"quitarRol",
+						"usuario@prueba,secreto123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/login/usuario@prueba,secreto123",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"login",
+						"usuario@prueba,secreto123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarUsuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/eliminarUsuario/usuario2@prueba",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"eliminarUsuario",
+						"usuario2@prueba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Errores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/api/Usuario/errores",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"api",
+						"Usuario",
+						"errores"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "localhost:41325"
+		}
+	]
+}
